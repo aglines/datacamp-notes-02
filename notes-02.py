@@ -102,3 +102,51 @@ europe["italy"] = data
 
 # Print europe
 print(europe)
+
+
+######### PANDAS
+# Import pandas as pd
+import pandas as pd
+brics = pd.DataFrame(dict)
+# Print out brics with print() and brics
+print(brics)
+# Print out the column country
+print(brics["country"])
+
+
+
+#################################    Dictionary to DataFrame (1) 
+# Pre-defined lists
+names = ['United States', 'Australia', 'Japan', 'India', 'Russia', 'Morocco', 'Egypt']
+dr =  [True, False, False, False, True, True, True]
+cpc = [809, 731, 588, 18, 200, 70, 45]
+import pandas as pd
+
+# Create dictionary my_dict with three key:value pairs: my_dict
+my_dict = {"country":names, "drives_right":dr, "cars_per_cap":cpc}
+
+# Build a DataFrame cars from my_dict: cars
+cars = pd.DataFrame(my_dict)
+
+# dict to dataframe 2, give it row labels
+row_labels = ['US', 'AUS', 'JPN', 'IN', 'RU', 'MOR', 'EG']
+cars.index = row_labels
+
+
+#################################    CSVC to DataFrame (1)
+# Import the cars.csv data: cars
+cars = pd.read_csv('/pathname/cars.csv', index_col = 0)
+# csv to dataframe 2, make sure it has row labels when you import it
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+
+#################################    Pandas part 2
+# Print out country column as Pandas Series
+print(cars["country"])
+# Print out country column as Pandas DataFrame
+print(cars[["country"]])
+# Print out DataFrame with country and drives_right columns
+print(cars[["country", "drives_right"]])
+
+
+

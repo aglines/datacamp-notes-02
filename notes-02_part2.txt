@@ -90,30 +90,164 @@ dict - indexed by unique keys
 Use a dictionary for a fast lookup table, and for items that need to be unordered, changeable, and indexed by unique keys.
 
 
-
-
 Dictionary Manipulation (1) - add a key
 Dictionary Manipulation (2) - del a key
 Dictionariception - a dictionary of dictionaries, allowed
     to access the inner dictionary, use the outer key
     to access the inner value, use the inner key
-    Use chained square brackets to select a value in the inner dict
-    
+    Use chained square brackets to select a value in the inner dictionary
+
+#################################    Pandas, Part 1
+tabular data, ie in a table
+each row is an observation, ie a value, each column is a variable, i.e. a datatype, also a key
+to work on these data, you CAN use 2d numpy arrays, but pandas is better  - built on numpy
+DataFrame is the main data structure in pandas
+DataFrame is a 2d data structure, like a 2d numpy array, with labeled axes (rows and columns)
+dataframe is a dictionary of series objects
+series is a 1d data structure, like a 1d numpy array, with labeled axes (rows and columns)
+series is a dictionary of values
+
+####    Build a dataframe from a dictionary manually
+
+    # youve got a dictionary of lists called dict,
+import pandas as pd
+new_data = pd.DataFrame(dict)
+
+    # pandas assigns automatic row labels, starting at 0
+    # you can specify the row labels with the index argument
+new_data = pd.DataFrame(dict, index = ['ab', 'cd', 'xyz'])
+    # either right then or after the fact,
+new_data.index = ['ab', 'cd', 'xyz']
+    # same with columns
+new_data = pd.DataFrame(dict, index = ['ab', 'cd', 'xyz'], columns = ['name', 'age', 'country', 'height'])
+    # or after the fact
+new_data.columns = ['name', 'age', 'country', 'height']
+
+#### Import a CSV into pandas,
+    # you can import a csv into a dataframe
+cars = pd.read_csv('/pathname/cars.csv')
+
+    # But maybe it reads the first column, meant to be row labels, as their own data col 
+    # you can specify the row labels with the index_col argument
+cars = pd.read_csv('/pathname/cars.csv', index_col = 0)
 
 
 
+#################################    Dictionary to DataFrame (1) 
+given lists, make a dictionary, then make a dataframe
+dictionary has {}, then keys you pick new, values are the lists you have
+pd.DataFrame(this_new_dict_you_made)
 
-Pandas, Part 1 
-Dictionary to DataFrame (1) 
 Dictionary to DataFrame (2) 
 CSV to DataFrame (1) 
 CSV to DataFrame (2) 
-Pandas, Part 2 
-Square Brackets (1) 
-Square Brackets (2) 
-loc and iloc (1) 
-loc and iloc (2) 
-loc and iloc (3) 
+    these are all in code file basically
+    just make anki flashcards from there
+
+#################################    Pandas, Part 2 
+    SQUARE BRACKETS USAGE in PANDAS
+
+index and select data from dataframes sohär:
+    - square brackets
+    if you only want one column
+mydataframe['country']
+    If you want the country column but keep data in a DataFrame, need double square brackets
+mydataframe[['country']]
+
+    if you want multiple columns
+mydataframe[['country', 'drives_right']]
+    if you want rows
+mydataframe[0:3]
+    if you want rows and columns
+mydataframe[0:3][['country', 'drives_right']]
+    if you want rows and columns
+mydataframe[['country', 'drives_right']][0:3]
+
+type(mydataframe['country']) # this is a series
+type(mydataframe[['country']]) # this is a dataframe
+type(mydataframe[['country', 'drives_right']]) # this is a dataframe
+
+
+
+################    LOC and ILOC
+w sqr brackets, you can select rows and cols [:]
+if we want same thing in pandas, we need loc and iloc
+loc     - label based, Selects data based on labels
+iloc    - integer position based, selects data based on position (expressed in ints)
+
+brics.loc["RU"] # this will select only the row with label RU, a pandas 1d series
+    but this will show on different lines.  for one line?
+brics.loc[["RU"]] # this will select only the row with label RU, a pandas 1d dataframe
+brics.loc[["RU", "IN", "CH"]] # this will select only the rows with labels RU, IN, CH, a pandas 1d dataframe
+brics.loc[["RU", "IN", "CH"], ["country", "capital"]] # this will select only the rows with labels RU, IN, CH, and only the cols country and capital, a pandas 1d dataframe
+
+brics.loc[:, ["country", "capital"]] # this will select all rows, and only the cols country and capital, a pandas 1d dataframe
+brics.loc[:, "country"] # this will select all rows, and only the col country, a pandas 1d series
+
+RECAP
+Sqr brackets for access via labels or via integers
+    column access
+        brics['country', 'capital']
+    row access only through slicing
+        brics[0:3]
+
+LOC for label-based selection, more versatile
+    row access
+        brics.loc['RU']
+        brics.loc[['RU', 'IN', 'CH']]
+    column access via slicing
+        brics.loc[:, 'country']
+        brics.loc[:, ['country', 'capital']]
+    row and column access via nested sqr brackets
+        brics.loc[['RU', 'IN', 'CH'], ['country', 'capital']]
+
+    with loc, subsetting is lots like 2d numpy arrays
+    just with loc you use row labels, not the integer positions of the element
+    if you want to use integer positions, use iloc
+
+ILOC for integer position-based selection
+    row access
+        brics.iloc[1]
+        brics.iloc[[1, 2, 3]]
+    column access
+        brics.iloc[:, 1]
+        brics.iloc[:, [1, 2]]
+    row and column access
+        brics.iloc[[1, 2, 3], [1, 2]]
+
+
+
+brics.iloc[:, 0] # this will select all rows, and only the col country, a pandas 1d series
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################    FILTERING
+
+
+
+
+
+#################################    Square Brackets (1) 
+#################################    Square Brackets (2) 
+#################################    loc and iloc (1) 
+#################################    loc and iloc (2) 
+#################################    loc and iloc (3) 
+
+
 
 3
 Logic, Control Flow and Filtering
