@@ -1,14 +1,108 @@
-2
-Dictionaries & Pandas
+######## Dictionaries & Pandas
 Learn about the dictionary, an alternative to the Python list, and the pandas DataFrame, the de facto standard to work with tabular data in Python. You will get hands-on practice with creating and manipulating datasets, and you’ll learn how to access the information you need from these data structures.
+
+DICTIONARY
+curly brackets
+key and value pairs sep by colons
+dict_x = {"keystring":value1, "keystring2":value2}
+The key MUST be a string, no?
+
 Dictionaries, Part 1 
-Motivation for dictionaries 
-Create dictionary 
-Access dictionary 
-Dictionaries, Part 2 
-Dictionary Manipulation (1) 
-Dictionary Manipulation (2) 
-Dictionariception 
+
+Motivation for dictionaries      this is boring and stupid code yes it's bad to not have dictionaries
+Create dictionary  -assemble by hand boring
+
+#### Access dictionary 
+europe = {'spain':'madrid', 'france':'paris' }
+print(europe(keys))
+print(europe(values))
+
+ACCESS a VALUE, given a key
+europe['france']
+
+ACCESS a KEY, given a value
+for key, value in europe.items():
+    if value == 'paris':
+        print(key)
+
+
+DICTIONARY PRACTICE        
+#### ADD a key:value pair
+europe['germany'] = 'berlin'
+
+#### DELETE a key:value pair
+del(europe['spain'])
+
+#### UPDATE a key:value pair
+europe['germany'] = 'bonn'
+#### zipping lists to create a dictionary
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+zipped = zip(keys, values)
+zipped = list(zipped)
+print(zipped)
+data = dict(zipped)
+print(data)
+
+#### DICTIONARY METHODS
+just like lists, dictionaries have methods
+x = dict.keys()
+x = dict.values()
+x = dict.items()
+x = dict.update()
+x = dict.pop()
+x = dict.popitem()
+x = dict.clear()
+x = dict.copy()
+x = dict.get()
+x = dict.fromkeys()
+x = dict.setdefault()
+
+dict_name.keys()
+dict_name.values()
+print(dict_keys)
+print(dict_values)
+
+####### Dictionaries, Part 2 
+- keys must be immutable
+- keys must be unique
+    - so when you add a key:value pair, if the key already exists, the value will be updated
+    - so when you add a key that already exists, the value will be updated
+    - when you add a value that already exists, the key will be updated
+values can be mutable
+values can be duplicated
+keys can be strings, numbers, tuples
+values can be strings, numbers, lists, tuples, dictionaries
+
+Check if a key is in a dictionary
+'italy' in europe       # this gives True or False
+'italy' not in europe
+
+LIST VS DICTIONARY
+list - ordered, changeable, allows duplicates
+list - ordered by range of numbers
+list - select, update, and remove with []
+Use a list for a collection of items that need to be ordered, changeable, allow duplicates, and to select entire subsets.
+
+dict - unordered, changeable, no duplicate (keys)
+dict - select, update, and remove with []
+dict - indexed by unique keys
+Use a dictionary for a fast lookup table, and for items that need to be unordered, changeable, and indexed by unique keys.
+
+
+
+
+Dictionary Manipulation (1) - add a key
+Dictionary Manipulation (2) - del a key
+Dictionariception - a dictionary of dictionaries, allowed
+    to access the inner dictionary, use the outer key
+    to access the inner value, use the inner key
+    Use chained square brackets to select a value in the inner dict
+    
+
+
+
+
 Pandas, Part 1 
 Dictionary to DataFrame (1) 
 Dictionary to DataFrame (2) 

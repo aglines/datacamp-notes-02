@@ -72,3 +72,33 @@ plt.xticks(tick_val, tick_lab)
 # After customizing, display the plot
 plt.show()
 
+
+########## Dictionaries
+# curly braces {} and colons : to select keys and values
+europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }
+
+# add a key value pair
+europe["italy"] = "rome"
+#check that italy is in europe
+print("italy" in europe)
+
+# delete a key value pair
+del(europe["spain"])
+#check that spain is not in europe
+print("spain" in europe)
+
+# Dictionary of dictionaries
+europe = { 'spain': { 'capital':'madrid', 'population':46.77 },
+           'france': { 'capital':'paris', 'population':66.03 }
+        }
+# print out the capital of France
+print(europe["france"]["capital"])
+
+# Create sub-dictionary data
+data = { "capital":"rome", "population":59.83 }
+
+# Add data to europe under key 'italy'
+europe["italy"] = data
+
+# Print europe
+print(europe)
