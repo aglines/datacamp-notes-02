@@ -220,46 +220,59 @@ ILOC for integer position-based selection
 brics.iloc[:, 0] # this will select all rows, and only the col country, a pandas 1d series
 
 
+FILTERING
+Square Brackets (1) 
+Square Brackets (2) 
+loc and iloc (1) 
+loc and iloc (2) 
+loc and iloc (3) 
+ok pretty good
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-################    FILTERING
-
-
-
-
-
-#################################    Square Brackets (1) 
-#################################    Square Brackets (2) 
-#################################    loc and iloc (1) 
-#################################    loc and iloc (2) 
-#################################    loc and iloc (3) 
-
-
-
-3
-Logic, Control Flow and Filtering
+##### 3 Logic, Control Flow and Filtering
 Boolean logic is the foundation of decision-making in Python programs. Learn about different comparison operators, how to combine them with Boolean operators, and how to use the Boolean outcomes in control structures. You'll also learn to filter data in pandas DataFrames using logic.
+
+## Comparison - even tho diff data types usu cont compare, any numeric type CAN be compared, ie float <> int
+
 Comparison Operators 
 Equality 
 Greater and less than 
 Compare arrays 
 Boolean Operators 
-and, or, not (1) 
-and, or, not (2) 
-Boolean operators with NumPy 
+
+######## and, or, not (1) 
+AND returns true ONLY if all items are true
+AND returns false if even only one item is false
+OR returns true if at least one item is true
+OR returns false ONLY if all items are false
+NOT returns the opposite of the boolean value
+
+
+####### Boolean operators with NumPy - things are different
+The truth value of an array with more than one element is ambiguous. Np clearly doesn't like an array of booleans to work on.
+INSTEAD use logical_and(), logical_or(), logical_not() 
+now we can works on arrays of booleans
+    np.logical_and(x > 10, x < 20)
+    np.logical_or(x < 10, x > 20)
+    np.logical_not(x < 10, x > 20)
+
+    np.logical_and(x > 10, x < 20, axis=0) # this will work on each column
+
+To actually select only these bmis from the bmi array, we can use the resulting array of booleans in square brackets:
+bmi[ np.logical_and( x > 10, x < 20 ) ] 
+
+
+
+
+
+
+
+USE METHODS a.any or a.all instead?
+
+
+
+
+
 if, elif, else 
 Warmup 
 if 
