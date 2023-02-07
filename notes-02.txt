@@ -3,7 +3,7 @@ notes - int py
 Matplotlib
 Data visualization is a key skill for aspiring data scientists. Matplotlib makes it easy to create meaningful and insightful plots. In this chapter, you’ll learn how to build various types of plots, and customize them to be more visually appealing and interpretable.
 
-
+VIDEO LECTURE
 Matplotlib plots
 import matplotlib.pyplot as plt
 
@@ -19,111 +19,168 @@ shows the data pts but no line connecting them
 adv - shows the full number of dt pts, which line plot does not
 
 
-
-
-
-
 Line plot (1) 
+# Print the last item of gdp_cap and life_exp
+print(gdp_cap[-1], life_exp[-1])
+# Make a line plot, gdp_cap on the x-axis, life_exp on the y-axis
+#import matplotlib.pyplot as plt
+plt.plot(gdp_cap, life_exp)
+# Display the plot
+plt.show()
+
 Line Plot (2): Interpretation 
+bc there is a line, we can guess what the populatn w b in a certain year
+
 Line plot (3) 
+# Print the last item of gdp_cap and life_exp
+print(gdp_cap[-1])
+print(life_exp[-1])
+# Make a line plot, gdp_cap on the x-axis, life_exp on the y-axis
+plt.plot(gdp_cap, life_exp)
+# Display the plot
+plt.show()
+
+plot is just messy lines not connecting anything logícally
+instead use a scatter plot
+
 Scatter Plot (1) 
+plt.scatter(gdp_cap, life_exp)
+use a logarithmic scale to show a correlation
+plt.xscale('log')
+
+Plot doesnt clear automatically, even in DC's py shell - what is that fn?
+matplotlib.pyplot.clf()    # clears figure
+matplotlib.pyplot.cla()     # clears only axes
+
+
 Scatter plot (2) 
-Histogram 
+ok the point here is that correct theres no clear correlation btwn the 2 datasets we used
+
+#####################################################
+Histogram
+VIDEO LECTURE
+
+plt.hist(values, bins=3)
+
+the distribution of datapoints in dataset
+imagine all dt pts in a set on a number line
+then divide the line into equal bins,
+now place all dt pts are in each bin,
+the height of the column shows how many dt pts live in that range
+
+help(plt.hist)
+most impt args are the data list, and the number of bins
+
 Build a histogram (1) 
+# Build histogram with 5 bins
+plt.hist(life_exp, 5)
+# Show and clean up plot
+plt.show()
+plt.clf()
+
 Build a histogram (2): bins 
+# Build histogram with 20 bins
+plt.hist(life_exp, 20)
+# Show and clean up again
+plt.show()
+plt.clf()
+
+
 Build a histogram (3): compare 
+# Histogram of life_exp, 15 bins
+plt.clf()
+plt.hist(life_exp, 15)
+# Show and clear plot
+plt.show()
+plt.clf()
+# Histogram of life_exp1950, 15 bins
+plt.hist(life_exp1950, 15)
+# Show and clear plot again
+plt.show()
+plt.clf()
+
+
 Choose the right plot (1) 
+did grades on a test follow a certain distribution?
+Distribution? Choose a histogram
+
 Choose the right plot (2) 
+did longer answers on exam questions correlate with higher grades?
+Correlation btwn two data sets? SCATTERPLOT.
+
+Choose the right plot (my own)
+How to predict the future value of something, given two datasets if the value isn't shown?
+Choose a LINE PLOT - if there's a smooth line, you can find it 
+
+#####################################################
 Customization 
-Labels 
-Ticks 
+VIDEO LECTURE
+diff plot types
+can change color shape labels axes
+it depends on the dt you have, & the story you want to tell
+label axes
+plt.xlabel('year')
+plt.ylabel('year')
+plt.title("this is my data")
+plt.yticks([0,2,4,6])
+    # 2nd list in yticks labels them:
+plt.yticks([0,2,4],
+            ['zero', '200','400'])
+
+even after this you can append other data values to the lists already done,
+to extend the graph for a more complete picture
+
+
+####### Labels - Axis, Title
+plt.scatter(gdp_cap, life_exp)  ;  plt.xscale('log') 
+
+# Define axis labels, add to plot
+xlab = 'GDP per Capita [in USD]'
+ylab = 'Life Expectancy [in years]'
+plt.xlabel(xlab)
+plt.ylabel(ylab)
+
+### define the title and add it to plot
+title = 'World Development in 2007'
+plt.title(title)
+plt.show()
+
+
+####### TICKS - define, then add to plot structure
+
+xtick_val = [100, 1000, 100000]
+xtick_label
+plt.xticks(xtick_val, xtick_label)
+
+ytick_val
+ytick_label
+plt.yticks(ytick_val, ytick_label)
+
+
 Sizes 
+Change size of each scatterplot data point to show its value
+?plt.scatter
+#   s : float or array-like, shape (n, ), optional
+#    The marker size in points**2.
+#    Default is ``rcParams['lines.markersize'] ** 2``.
+
 Colors 
-Additional Customizations 
+plt.scatter(x = gdp_cap, y = life_exp, s = np.array(pop) * 2, c = col, alpha = 0.8)
+    # col is a dict (datatype) defined elsewhere, 
+col = { 'Asia':'red', 'Europe':'green', 'Africa':'blue', ...}
+alpha is how transparent the data point bubbles are, 0 to 1
+
+
+Other - Grid, Text wherever
+Add text in specified x,y coordinates 
+plt.text(1550, 71, 'India')   # this will put the word "india" around where the data bubble ends up
+
+plt.grid(True) 
+Grid shows lines on the already defined xticks or yticks values 
+
 Interpretation 
+    meh.  questions are bad, & answers dont' rEALLY matchchart lol
 
-2
-Dictionaries & Pandas
-Learn about the dictionary, an alternative to the Python list, and the pandas DataFrame, the de facto standard to work with tabular data in Python. You will get hands-on practice with creating and manipulating datasets, and you’ll learn how to access the information you need from these data structures.
-Dictionaries, Part 1 
-Motivation for dictionaries 
-Create dictionary 
-Access dictionary 
-Dictionaries, Part 2 
-Dictionary Manipulation (1) 
-Dictionary Manipulation (2) 
-Dictionariception 
-Pandas, Part 1 
-Dictionary to DataFrame (1) 
-Dictionary to DataFrame (2) 
-CSV to DataFrame (1) 
-CSV to DataFrame (2) 
-Pandas, Part 2 
-Square Brackets (1) 
-Square Brackets (2) 
-loc and iloc (1) 
-loc and iloc (2) 
-loc and iloc (3) 
 
-3
-Logic, Control Flow and Filtering
-Boolean logic is the foundation of decision-making in Python programs. Learn about different comparison operators, how to combine them with Boolean operators, and how to use the Boolean outcomes in control structures. You'll also learn to filter data in pandas DataFrames using logic.
-Comparison Operators 
-Equality 
-Greater and less than 
-Compare arrays 
-Boolean Operators 
-and, or, not (1) 
-and, or, not (2) 
-Boolean operators with NumPy 
-if, elif, else 
-Warmup 
-if 
-Add else 
-Customize further: elif 
-Filtering pandas DataFrames 
-Driving right (1) 
-Driving right (2) 
-Cars per capita (1) 
-Cars per capita (2) 
-
-4
-Loops
-There are several techniques you can use to repeatedly execute Python code. While loops are like repeated if statements, the for loop iterates over all kinds of data structures. Learn all about them in this chapter.
-while loop 
-while: warming up 
-Basic while loop 
-Add conditionals 
-for loop 
-Loop over a list 
-Indexes and values (1) 
-Indexes and values (2) 
-Loop over list of lists 
-Loop Data Structures Part 1 
-Loop over dictionary 
-Loop over NumPy array 
-Loop Data Structures Part 2 
-Loop over DataFrame (1) 
-Loop over DataFrame (2) 
-Add column (1) 
-Add column (2) 
-
-5
-Case Study: Hacker Statistics
-This chapter will allow you to apply all the concepts you've learned in this course. You will use hacker statistics to calculate your chances of winning a bet. Use random number generators, loops, and Matplotlib to gain a competitive edge!
-Random Numbers 
-Random float 
-Roll the dice 
-Determine your next move 
-Random Walk 
-The next step 
-How low can you go? 
-Visualize the walk 
-Distribution 
-Simulate multiple walks 
-Visualize all walks 
-Implement clumsiness 
-Plot the distribution 
-Calculate the odds
 
 
