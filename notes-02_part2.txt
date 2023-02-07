@@ -324,13 +324,53 @@ Loop Data Structures Part 1
 ########### LOOP OVER OTHER DATA Structures
 
 ### Loop over dictionary
+you cant loop over it like enumerate, no "for key, value in xdict"
+
+**** ITEMS method
+
+for key, value in xdict.items() :
+    print(key + ": " + value)
+
+        Note, this will NOT be ordered obviously
+
+### Loop over NumPy array 
+cant loop over nparray, it would give you a whole array on each iteration
+
+**** NDITER function
+
+for value in np.nditer(xarray) :
+    print(value)
+now we get each value in each array, just all in order
 
 
+###### LOOP OVER DATA FRAME  Loop Data Structures Part 2 
+METHOD  "ITERROWS"
+    gives 2 things - label of row, and data in that row (as a series)
+for label, row in brics.iterrows():
+    print... etc
+bc each row is a series you can subselect from there too
+
+for lab, row in brics.iterrows() :
+    print(lab + ": " + row["capital"])
+    brics.loc[lab, "name_length"] = len(row["country"])
+
+this WORKS yes but youre creating a Series object on every iteration
+which doesnt scale for large datasets
+use instead, APPLY
+
+#### APPLY 
+doesnt even need a for loop it applies the function to each row
+
+brics["name_length"] = brics["country"].apply(len)
+
+you select the country col on the brics datatframe, 
+and on this column (series) you apply the len function
+with each country name as input,
+and produces a new array called  name_length
 
 
-Loop over NumPy array 
-Loop Data Structures Part 2 
-Loop over DataFrame (1) 
+### Loop over DataFrame (1) 
+
 Loop over DataFrame (2) 
 Add column (1) 
 Add column (2) 
@@ -338,11 +378,26 @@ Add column (2)
 5
 Case Study: Hacker Statistics
 This chapter will allow you to apply all the concepts you've learned in this course. You will use hacker statistics to calculate your chances of winning a bet. Use random number generators, loops, and Matplotlib to gain a competitive edge!
+
 Random Numbers 
+    numpy random function   
+    can set a seed manually,
+        to ensure reproducability
+    the numbers ARE random when you run the program,
+        but when you run it again you'll get the SAME random number
+
+np.random.seed(123)
+np.random.rand()    gives a rand num btwm 0 and 1
+coin = np.random.randint(0,2)
+
+
+
+
 Random float 
 Roll the dice 
 Determine your next move 
 Random Walk 
+
 The next step 
 How low can you go? 
 Visualize the walk 
@@ -353,4 +408,5 @@ Implement clumsiness
 Plot the distribution 
 Calculate the odds
 
+#### DISTRIBUTION of random walk
 
