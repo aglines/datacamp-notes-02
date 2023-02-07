@@ -260,44 +260,74 @@ now we can works on arrays of booleans
 
 To actually select only these bmis from the bmi array, we can use the resulting array of booleans in square brackets:
 bmi[ np.logical_and( x > 10, x < 20 ) ] 
+    USE METHODS a.any or a.all instead?  ( look later)
 
+######## NOT is eval'd higher priority than AND or OR ...
 
+########## CONDITIONALS if, elif, else 
+ IF condition :
+    do expression
 
+#SYNTAX ..  IF fdfdsfsd then COLON, then newline and INDENT (4 spaces or tab) (same line?)
+to exit the if, newline and NO INDENT
+to continue the if, all lines indented
 
+############## Filtering pandas DataFrames
+One filter - get country areas, compare to see if  > 8m km, then use result to do appropr selectn on datafram
+we want a pandas SERIES, not dtframe 
 
+brics["area"]   # loc or iloc would work too
+brics["area"] > 8    ok got right booleans
+is_huge = brics["area"] > 8     # is_huge is a boolean series
+finally we subselect the dataframe with the boolean series
+brics[is_huge]
 
+OR write in one line, read it logically from inside out
+brics[brics["area"] > 8]
 
-USE METHODS a.any or a.all instead?
+Now combine w np arrays for more xomplex filtering
+brics[np.logical_and(brics["area"] > 8, brics["area"] < 10)]
 
-
-
-
-
-if, elif, else 
-Warmup 
-if 
-Add else 
-Customize further: elif 
-Filtering pandas DataFrames 
+np.logical_and(brics["area"] > 8)
+np.logical_and(brics["area"] > 8, brics["area"] < 10)
 Driving right (1) 
 Driving right (2) 
 Cars per capita (1) 
 Cars per capita (2) 
 
-4
-Loops
-There are several techniques you can use to repeatedly execute Python code. While loops are like repeated if statements, the for loop iterates over all kinds of data structures. Learn all about them in this chapter.
-while loop 
-while: warming up 
-Basic while loop 
-Add conditionals 
-for loop 
+############## 4  Loops
+
+while loop - repeat an action until a particular condition is met
+
+syntax like if sttmt
+while condition : 
+    do expression
+
+######    for loop 
 Loop over a list 
+or every char in string
+
+######## ENUMERATE, Loop AND display the index
+
+for index, height in enumerate(xlist) :
+    print("index " + str(index) + ": " + str(height))
+        you must stringify heights bc theyre floats
+
+enumerate(xlist) produces two values on each iteration: the index of the value, and the value itself
+Now, on each iteration, index will contain the index, and height will contain the float.
+
 Indexes and values (1) 
 Indexes and values (2) 
 Loop over list of lists 
 Loop Data Structures Part 1 
-Loop over dictionary 
+
+########### LOOP OVER OTHER DATA Structures
+
+### Loop over dictionary
+
+
+
+
 Loop over NumPy array 
 Loop Data Structures Part 2 
 Loop over DataFrame (1) 
