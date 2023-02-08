@@ -1,6 +1,6 @@
 1,what import to use plots?,import matplotlib.pyplot as plt,, 
 2,show a lineplot?,just normal plot w line connecting,"plt.plot(x,y)",plt.show()
-3,put an axis on a log scale?,plt.xscale("log"),,
+3,put an axis on a log scale?,plt.xscale('log'),,
 4,show a plot with only points?,scatter plot,"plt.scatter(x,y)",
 5,show a histogram?,plt.hist(list),,
 6,specify number of bins in histogram?,"plt.hist(list, 5)",,
@@ -21,28 +21,28 @@
 21,add a new value to a dict,europe["italy"] = "rome",give its key in the list part,
 22,check if a value is in a dict?,print("italy" in europe),>  True,
 23,update a value in a dictionary?,just redefine it,europe["germany"] = "berlin",
-24,delete a value from a dict?,del(europe["england"]),,
+24,delete a value from a dict?,del(europe["england"]),but is this key correct better check,
 25,see all key-value pairs in a dict?,items method,all = xdict.items(),print(all)
 26,create a nested dict?,"books = { '1984': {'genre':'satire', 'auth':'Orwell'},"," 'Circe': {'genre':'hist', 'auth';'Miller'} }",
 27,select data from nested dict?,"one way is double sqr-brackets","books['1984']['genre']",
-28,define a pandas dataframe?,a table of data where you can label rows and columns,,
+28,define a pandas dataframe - not technically just informally?,a table of data where you can label rows and columns,,
 29,create a dataframe from some lists & a dict?,"xlist = [1,2],... ; xdict={ 'xlist':xvalues, 'ylist':yvalues }",cars = pd.DataFrame(xdict),
 30,define dataframe row labels?,index method defines row labels,"row_labs = ['euro', 'yen']",money.index = row_labs
 31,make dataframe from csv?,import pandas as pd,cars = pd.read_csv('filepath/data.csv'),
 32,define dataframe column labels?,index_col parameter,"cars = pd.read_csv('cars.csv', index_col = 0)",now first column is the header
-33,select data in a dataframe using label?,loc method,cars.loc['RU'] # this is a Series,cars.loc[['RU']] # this is a dataframe
-34,select data in a dataframe using integer number of row or col,iloc method,cars.iloc[4],cars.iloc[[4]]
-35,subselect both rows and cols using loc or iloc?,"cars.loc[['IN', 'RU'], 'cars_per_cap']","cars.iloc[[3, 4], 0]",
-36,subselect in dataframe using colon notation?,"cars.loc[:, 'country']","cars.iloc[:, 1]",
-37,subselect a column from a dataframe to get only a series not a full dataframe?,use single square brackets,print(cars['country']),
+33,select data in a dataframe using text label?,loc method,cars.loc['RU'] # this is a Series,cars.loc[['RU']] # this is a dataframe
+34,select data in a dataframe using integer number of row or col,iloc method,cars.iloc[4]  # this is a Series,cars.iloc[[4]]  # this is a dataframe
+35,subselect both rows and cols using loc or iloc?,"cars.loc[['IN', 'RU'], 'cars_per_cap']  #  'IN' row name ; 'cars_..' col name","cars.iloc[[3, 4], 0]",
+36,subselect all rows for one column in dataframe using colon notation?,"cars.loc[:, 'country']","cars.iloc[:, 1]",
+37,subselect a column from a dataframe to get only a series not a full dataframe?,use single square brackets,print(cars['country']),this gives a dataframe even though it's only one col
 38,subselect a column from a dataframe to get a dataframe not series?,use double square brackets,print(cars[['country']]),
-39,use booleans with NumPy?,logical_and & _or & _not methods,"np.logical_and(size > 3, size < 9)",
-40,select all X (t.ex name) where Y meets criteria (t.ex > 5)?,select the Y column,filter all Y > 5 into a Series,find all X data in that Series
-41,run comparison on selected Series data?,just use operator,xlist['size'] > 5,result is a Series containing booleans
-42,use a compared Series containing booleans to select out data?,xlist[is_above_5],result is full dataframe but limited by criteria,
+39,use booleans with NumPy to select data?,logical_and & _or & _not methods,"np.logical_and(size > 3, size < 9)",
+40,select all X rows (t.ex name) where Y col meets criteria (t.ex > 5)?,select the Y column first,comparison to filter all Y > 5 into a Series,find all X data in that Series
+41,run comparison on selected Series data?,just use comparison operator,xlist['size'] > 5,result is a Series containing booleans
+42,use a compared Series containing booleans to select out data?,is_above_5 already a Series,xlist[is_above_5],result is full dataframe but limited by criteria
 43,subset a dataframe using a comparison in one line instead of more?,nest the filters,xlist[xlist['size'] > 5 ],
-44,use boolean operators and comparison to select data?,"np.logical_and(xlist['size'] > 5, xlist['size'] < 9)",,
-45,how to access loop index info?,enumerate,"for index, a in enumerate(xlist) :","print(index, a)"
+44,use boolean operators and comparison to select data in datafram?,"np.logical_and(xframe['size'] > 5, xframe['size'] < 9)",,
+45,how to access loop index info in a list?,enumerate,"for index, a in enumerate(xlist) :","print(index, a)"
 46,how to loop over lists of lists?,just access like normal,for room in house : print room[0] is room[1] meters,
 47,how to loop over dictionary?,items() method,"for key, value in atlas.items() : print(key, value)",this is unordered ofc
 48,how to loop over 1D NumPy array?,for x in my_array :,like normal,
