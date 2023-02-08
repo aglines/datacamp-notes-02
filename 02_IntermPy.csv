@@ -13,47 +13,47 @@
 13,how to put specific values along an axis?,"xvalues = [100, 200, 300]","plt.xticks(xvalues)",
 14,how to put labels on axis ticks?,"xlabels = ['1k','2k','3k']","plt.xticks(xvalues, xlabels)",
 15,change size of each data point based on its value?,use the size parameter s,"plt.scatter(xdata, ydata, s)",
-16,how to use color?,define a color dict then use the argument c,"colors = { 'Asia':'red', 'Euro':'blue' }","then :  plt.scatter(xdata, ydata, c = colors)"
+16,how to use color?,make a list of color words strings one for each data point (beforehand-this is clunky),"then :  plt.scatter(xdata, ydata, c = colors)",
 17,how to drop text anywhere desired onto your dataviz?,"plt.text(1550, 71, 'India')",values here are x and y coordinates,
-18,create a dictionary?,"europe = { 'France': 'Paris', 'Norway' : 'Oslo' }",curly brackets & key-value pairs,
-19,find a value in a dict given its key?,europe['norway'],>  oslo,
-20,find all keys in a dict?,europe.keys(),returns a list,">   dict_keys(['france', 'norway'])"
+18,create a dictionary manually?,"europe = { 'France': 'Paris', 'Norway' : 'Oslo' }",curly brackets & key-value pairs,
+19,find a value in a dict given its key?,europe['key_norway'],>  value_oslo,
+20,find all keys in a dict?,europe.keys(),returns a list,">   dict_keys(['key_france', 'key_norway'])"
 21,add a new value to a dict,europe["italy"] = "rome",give its key in the list part,
-22,check if a value is in a dict?,print("italy" in europe),>  True,
+22,check if a value is in a dict?,'italy' in europe),>  True,
 23,update a value in a dictionary?,just redefine it,europe["germany"] = "berlin",
 24,delete a value from a dict?,del(europe["england"]),but is this key correct better check,
 25,see all key-value pairs in a dict?,items method,all = xdict.items(),print(all)
 26,create a nested dict?,"books = { '1984': {'genre':'satire', 'auth':'Orwell'},"," 'Circe': {'genre':'hist', 'auth';'Miller'} }",
 27,select data from nested dict?,"one way is double sqr-brackets","books['1984']['genre']",
-28,define a pandas dataframe - not technically just informally?,a table of data where you can label rows and columns,,
-29,create a dataframe from some lists & a dict?,"xlist = [1,2],... ; xdict={ 'xlist':xvalues, 'ylist':yvalues }",cars = pd.DataFrame(xdict),
-30,define dataframe row labels?,index method defines row labels,"row_labs = ['euro', 'yen']",money.index = row_labs
-31,make dataframe from csv?,import pandas as pd,cars = pd.read_csv('filepath/data.csv'),
-32,define dataframe column labels?,index_col parameter,"cars = pd.read_csv('cars.csv', index_col = 0)",now first column is the header
+28,define a pandas dataframe - just informally?,it's just a table of data with text labeled rows and columns,,
+29,create a dataframe from some lists & a dict?,"zip lists into a dict :  xdict(zip(keyslist, valueslist))",then  df = pd.DataFrame(xdict),
+30,define dataframe row labels?,index method gives row text labels,"row_labs = ['euro', 'yen']",money.index = row_labs
+31,make dataframe from imported csv?,import pandas as pd,cars = pd.read_csv('filepath/data.csv'),
+32,define dataframe column labels?,use index_col at any point,"df = pd.read_csv('cars.csv', index_col = 0)",or after : office.set_index('episode_number')
 33,select data in a dataframe using text label?,loc method,cars.loc['RU'] # this is a Series,cars.loc[['RU']] # this is a dataframe
 34,select data in a dataframe using integer number of row or col,iloc method,cars.iloc[4]  # this is a Series,cars.iloc[[4]]  # this is a dataframe
 35,subselect both rows and cols using loc or iloc?,"cars.loc[['IN', 'RU'], 'cars_per_cap']  #  'IN' row name ; 'cars_..' col name","cars.iloc[[3, 4], 0]",
 36,subselect all rows for one column in dataframe using colon notation?,"cars.loc[:, 'country']","cars.iloc[:, 1]",
 37,subselect a column from a dataframe to get only a series not a full dataframe?,use single square brackets,print(cars['country']),this gives a dataframe even though it's only one col
 38,subselect a column from a dataframe to get a dataframe not series?,use double square brackets,print(cars[['country']]),
-39,use booleans with NumPy to select data?,logical_and & _or & _not methods,"np.logical_and(size > 3, size < 9)",
-40,select all X rows (t.ex name) where Y col meets criteria (t.ex > 5)?,select the Y column first,comparison to filter all Y > 5 into a Series,find all X data in that Series
-41,run comparison on selected Series data?,just use comparison operator,xlist['size'] > 5,result is a Series containing booleans
+39,use booleans with NumPy to select data?,logical_and & _or & _not methods,"np.logical_and(x > 3, x < 9)",will give the AND conjunction of both those bools
+40,select all df X rows where Y meets a criteria?,"loop over rows via .loc to grab X from that row","for index in range(6): X = df.loc[index, 'col_name'] # grabs X value","then grab Y from that same index but in other column - if X > 5 : then Y = office.loc[index, 'other_column']"
+41,run comparison on selected Series data?,just use comparison operator,xSeries['size'] > 5,result is a Series containing booleans
 42,use a compared Series containing booleans to select out data?,is_above_5 already a Series,xlist[is_above_5],result is full dataframe but limited by criteria
 43,subset a dataframe using a comparison in one line instead of more?,nest the filters,xlist[xlist['size'] > 5 ],
 44,use boolean operators and comparison to select data in datafram?,"np.logical_and(xframe['size'] > 5, xframe['size'] < 9)",,
 45,how to access loop index info in a list?,enumerate,"for index, a in enumerate(xlist) :","print(index, a)"
 46,how to loop over lists of lists?,just access like normal,for room in house : print room[0] is room[1] meters,
-47,how to loop over dictionary?,items() method,"for key, value in atlas.items() : print(key, value)",this is unordered ofc
-48,how to loop over 1D NumPy array?,for x in my_array :,like normal,
+47,how to loop over dictionary?,items() method,"for key, value in xdict.items() : print(key, value)",this is unordered ofc
+48,how to loop over 1D NumPy array?,simple for loop,for x in my_array : do x,
 49,how to loop over 2D NumPy array?,nd iteration,for x in np.nditer(my_array) :,
-50,how to loop over pandas dataframe?,iterrows() method,"for label, row in xnames.iterrows() :",
-51,how to access Pandas Series data produced by iterrows()?,print(row['country']),,
-52,how to add a column to a DataFrame?,call iterrows on a specific column to give a 'sequence' which is the row label and the entire row,then ...ah hell,
-53,add column using apply function,,,
+50,how to loop over pandas dataframe?,iterrows() method,"for x_label, y_row in df.iterrows() : ..",
+51,how to access Pandas Series produced by iterrows()?,just square brackets :,print(row['country']),
+52,how to add a column to a DataFrame?,"df.insert(location_integer, column_textlabel, value)",,
+53,how to use apply dataframe function?,df.apply(function),like df.apply(np.sqrt) gives square roots of all values,
 54,generate a random number?,np.random.rand(),,
 55,reproduce the same random data?,define random seed,np.random.seed(123),
 56,get a random integer?,"np.random.randint(1,7)",final digit excluded,
 57,do a loop a specified number of times?,for x in range(10) : ,this will do it 10 times,
-58,how to prevent a looped var from going beyond a limit?,max() function,it will take 2 args and give only the larger,
-59,what does append do exactly I had beter know this,,,
+58,how to prevent a looped var from going beyond a limit?,"var = max(var, limit)",will give whichever is greater so that var never goes beyond limit,
+59,create a dict if already have lists?,"xdict = zip(keys, values)",,
