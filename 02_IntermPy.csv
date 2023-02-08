@@ -42,18 +42,18 @@
 42,use a compared Series containing booleans to select out data?,xlist[is_above_5],result is full dataframe but limited by criteria,
 43,subset a dataframe using a comparison in one line instead of more?,nest the filters,xlist[xlist['size'] > 5 ],
 44,use boolean operators and comparison to select data?,"np.logical_and(xlist['size'] > 5, xlist['size'] < 9)",,
-45,how to access loop index info?,enumerate,"for index, a in enumerate(xlist) :",print(index, a)
+45,how to access loop index info?,enumerate,"for index, a in enumerate(xlist) :","print(index, a)"
 46,how to loop over lists of lists?,just access like normal,for room in house : print room[0] is room[1] meters,
 47,how to loop over dictionary?,items() method,"for key, value in atlas.items() : print(key, value)",this is unordered ofc
 48,how to loop over 1D NumPy array?,for x in my_array :,like normal,
 49,how to loop over 2D NumPy array?,nd iteration,for x in np.nditer(my_array) :,
 50,how to loop over pandas dataframe?,iterrows() method,"for label, row in xnames.iterrows() :",
 51,how to access Pandas Series data produced by iterrows()?,print(row['country']),,
-52,how to add a column to a DataFrame?,call iterrows on a specific column to give a 'sequence' which is the row label and the entire row,then ...ah hell
-53,add column using apply function,,
+52,how to add a column to a DataFrame?,call iterrows on a specific column to give a 'sequence' which is the row label and the entire row,then ...ah hell,
+53,add column using apply function,,,
 54,generate a random number?,np.random.rand(),,
 55,reproduce the same random data?,define random seed,np.random.seed(123),
 56,get a random integer?,"np.random.randint(1,7)",final digit excluded,
 57,do a loop a specified number of times?,for x in range(10) : ,this will do it 10 times,
 58,how to prevent a looped var from going beyond a limit?,max() function,it will take 2 args and give only the larger,
-59,what does append do exactly I had beter know this
+59,what does append do exactly I had beter know this,,,

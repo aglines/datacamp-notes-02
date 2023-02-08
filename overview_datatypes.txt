@@ -1,0 +1,38 @@
+overview of loopable datatypes
+string
+
+list
+    1d, 2d
+    xlist[1,2,"shoe","boot"]
+
+dict
+    xdict{ "word":"blerg", "again":"delicious" }
+
+nparray
+    1d, 2d
+    import numpy as np ;    xarray = np.array
+
+pandas dataSeries (1d)
+
+pandas dataFrame (2d)
+
+
+
+
+this is better as a written chart, but here is ok too
+
+
+COLUMN CATEGORIES for each dataytpe
+
+CRUD functionality for each create read update delete
+    transformation btwn a type similar to it
+
+ITERATING over each
+
+SUBSETTING from each
+
+otrher stuff u can do w each
+OK do this later actually but for now continue
+
+
+
